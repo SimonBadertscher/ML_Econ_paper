@@ -433,7 +433,7 @@ for (y in years){
 ates_ses <- transpose(na.omit(data.frame(transpose(ates),
                                          transpose(ses))))[seq(1,24,4)]
 colnames(ates_ses) <- c(2000:2023)[seq(1,24,4)]
-rownames(ates_ses) <- c("Female","")
+rownames(ates_ses) <- c("","")
 stargazer(ates_ses, type = "latex", notes = "*p $<$ 0.1; **p $<$ 0.05; ***p $<$ 0.01",out = "tables/ates_ses.tex",float = FALSE, summary=FALSE)
 
 lines <- readLines("tables/ates_ses.tex")
@@ -449,7 +449,7 @@ stargazer(ols_results[seq(1,24,4)],
           header = FALSE,
           dep.var.labels.include = FALSE,
           model.names = FALSE,
-          covariate.labels = "Sex",
+          covariate.labels = "Female",
           notes.label = "",
           dep.var.caption = "",
           out="tables/ols_results.tex",
