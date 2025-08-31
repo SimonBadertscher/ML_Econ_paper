@@ -567,7 +567,7 @@ mean_age_plot <- ggplot(plot_data, aes(x = age, y = ite)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   labs(title = "",
        x = "Age",
-       y = "Mean gender gap (log points)",
+       y = "Mean gender wage gap",
        color = "Year") +
   theme_minimal() + theme(text = element_text(size = 18, family = "CMU Serif"),
                           axis.title = element_text(size = 18),
@@ -617,7 +617,7 @@ mean_children_plot <- ggplot(plot_data, aes(x = n_children, y = ite)) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   labs(title = "",
        x = "No. of children",
-       y = "Mean gender gap (log points)",
+       y = "Mean gender wage gap",
        color = "Year") +
   theme_minimal() +
   theme(text = element_text(size = 18, family = "CMU Serif"),
