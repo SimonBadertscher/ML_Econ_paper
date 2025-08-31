@@ -68,7 +68,7 @@ year <- c("00","01","02", "03", "04", "05", "06", "07", "08", "09", 10:23)
 setnames_variables_p <- c("personal_id", "interview_type", "househ_id", "sex", "age", "nationality", "civstat",
                           "isced", "educyrs", "annual_income", "conWH", "occupation_isco",
                           "industry", "part_time", "supervisory_role", "health_status", "first_lang",
-                          "firm_size","public_private","n_children","dep_freq")
+                          "firm_size", "public_private", "n_children","dep_freq")
 
 setnames_variables_h <- c("househ_id", "househ_type", "new_born")
 
@@ -431,8 +431,8 @@ for (y in years){
 }
 
 ates_ses <- transpose(na.omit(data.frame(transpose(ates),
-                                         transpose(ses))))[seq(1,24,3)]
-colnames(ates_ses) <- c(2000:2023)[seq(1,24,3)]
+                                         transpose(ses))))[seq(1,24,4)]
+colnames(ates_ses) <- c(2000:2023)[seq(1,24,4)]
 rownames(ates_ses) <- c("Female","")
 stargazer(ates_ses, type = "latex", notes = "*p $<$ 0.1; **p $<$ 0.05; ***p $<$ 0.01",out = "tables/ates_ses.tex",float = FALSE, summary=FALSE)
 
@@ -442,9 +442,9 @@ lines_fixed <- gsub("TWOSTAR", "^{**}", lines_fixed)
 lines_fixed <- gsub("ONESTAR", "^{*}", lines_fixed)
 writeLines(lines_fixed, "tables/ates_ses.tex")
 
-stargazer(ols_results[seq(1,24,3)],
+stargazer(ols_results[seq(1,24,4)],
           keep = "sex",
-          se = ols_results_se[seq(1,24,3)],
+          se = ols_results_se[seq(1,24,4)],
           title = "",
           header = FALSE,
           dep.var.labels.include = FALSE,
@@ -454,7 +454,7 @@ stargazer(ols_results[seq(1,24,3)],
           dep.var.caption = "",
           out="tables/ols_results.tex",
           digits = 3,
-          column.labels = as.character(c(2000:2023)[seq(1,24,3)]),
+          column.labels = as.character(c(2000:2023)[seq(1,24,4)]),
           model.numbers =FALSE,
           omit.stat = c("f","ser"),          
           float = FALSE,
@@ -628,6 +628,3 @@ mean_children_plot <- ggplot(plot_data, aes(x = n_children, y = ite)) +
         legend.position = "bottom")
 
 ggsave(filename = "plots/mean_children_plot.png", plot = mean_children_plot, width = 8, height = 5, dpi = 800)                             
-
-
-
